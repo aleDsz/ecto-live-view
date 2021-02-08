@@ -69,13 +69,6 @@ defmodule EctoLiveViewWeb do
     end
   end
 
-  def channel do
-    quote do
-      use Phoenix.Channel
-      import EctoLiveViewWeb.Gettext
-    end
-  end
-
   defp view_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
@@ -83,6 +76,7 @@ defmodule EctoLiveViewWeb do
 
       # Import LiveView helpers (live_render, live_component, live_patch, etc)
       import Phoenix.LiveView.Helpers
+      import EctoLiveViewWeb.LiveHelpers
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View

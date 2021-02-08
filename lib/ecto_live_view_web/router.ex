@@ -10,20 +10,16 @@ defmodule EctoLiveViewWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", EctoLiveViewWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
-  end
+    live "/", UserLive.Index, :index
+    live "/new", UserLive.Index, :new
+    live "/:id/edit", UserLive.Index, :edit
 
-  # Other scopes may use custom stacks.
-  # scope "/api", EctoLiveViewWeb do
-  #   pipe_through :api
-  # end
+    live "/:id", UserLive.Show, :show
+    live "/:id/show/edit", UserLive.Show, :edit
+  end
 
   # Enables LiveDashboard only for development
   #
